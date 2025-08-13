@@ -35,7 +35,7 @@ The frontend needs to know the address of your backend API.
 
 
 # Copy the example environment file
-cp .env.local.example .env.local
+cp  .env.local
 Now, open the newly created .env.local file and set the NEXT_PUBLIC_API_URL to point to your running backend server.
 
 NEXT_PUBLIC_API_URL="http://localhost:5001/api"
