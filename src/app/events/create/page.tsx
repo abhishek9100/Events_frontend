@@ -49,7 +49,6 @@ export default function CreateEventPage() {
 
   return (
     <div className=" flex items-center justify-center  p-5">
-      {/* Toast Notification */}
       <AnimatePresence>
         {toast && (
           <motion.div
@@ -58,7 +57,7 @@ export default function CreateEventPage() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 200 }}
             transition={{ duration: 0.4 }}
-            className={`fixed top-5 right-5 shadow-lg rounded-lg overflow-hidden w-80 z-50 
+            className={`fixed top-15 right-5 shadow-lg rounded-lg overflow-hidden w-80 z-50 
               ${toast.type === 'success' ? 'bg-green-500' : 'bg-red-500'} text-white`}
           >
             <div className="p-4 font-medium">{toast.message}</div>

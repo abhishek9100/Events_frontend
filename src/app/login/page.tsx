@@ -21,7 +21,7 @@ export default function LoginPage() {
 
     setTimeout(() => {
       setToast(null);
-    }, 4000); // Auto-hide after 4 seconds
+    }, 4000); 
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -40,7 +40,6 @@ export default function LoginPage() {
       showToast('success', 'Login successful! Redirecting...');
   
       setTimeout(() => {
-        // ✅ Force full reload to update navbar state instantly
         window.location.href = '/dashboard';
       }, 1500);
   
@@ -52,7 +51,6 @@ export default function LoginPage() {
 
   return (
     <div className=" flex items-center justify-center p-5 ">
-      {/* Toast Notification */}
       <AnimatePresence>
         {toast && (
           <motion.div
@@ -75,7 +73,6 @@ export default function LoginPage() {
         )}
       </AnimatePresence>
 
-      {/* Login Card */}
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -86,7 +83,6 @@ export default function LoginPage() {
         <p className="text-center text-gray-500 mb-8">Please sign in to your account</p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Email Input */}
           <div>
             <label className="block mb-2 font-medium text-gray-700">Email</label>
             <input
@@ -99,7 +95,6 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* Password Input */}
           <div>
             <label className="block mb-2 font-medium text-gray-700">Password</label>
             <input
@@ -112,7 +107,6 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* Submit Button */}
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}

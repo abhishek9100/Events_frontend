@@ -17,7 +17,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* ✅ Force white background for both light and dark theme */}
       <body className={`${inter.className} bg-white text-gray-900`}>
         <Navbar />
         <main className="container mx-auto px-4 py-8">{children}</main>

@@ -17,7 +17,6 @@ export default function EditEventPage() {
     const { isAdmin, user } = useAuth();
     const token = Cookies.get('token');
 
-    // Fetch existing event data
     useEffect(() => {
         if (!id) return;
         const fetchEvent = async () => {
@@ -27,7 +26,6 @@ export default function EditEventPage() {
                 return;
             }
             const data = await res.json();
-            // Authorization check on client-side as well
             if (user?.userId !== data.authorId) {
                 router.push('/dashboard'); // or an unauthorized page
                 return;
@@ -35,18 +33,16 @@ export default function EditEventPage() {
             setTitle(data.title);
             setDescription(data.description);
             setLocation(data.location);
-            // Format date for datetime-local input
             const d = new Date(data.date);
             d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
             setDate(d.toISOString().slice(0, 16));
         };
 
-        if (user) { // Ensure user is loaded before fetching
+        if (user) { 
              fetchEvent();
         }
     }, [id, user, router]);
     
-    // Redirect if not an admin
     useEffect(() => {
         if(user && !isAdmin) router.push('/');
     }, [user, isAdmin, router]);
@@ -78,7 +74,6 @@ export default function EditEventPage() {
                 <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Edit Event</h1>
                 {error && <p className="text-red-500 bg-red-100 p-3 rounded-md mb-4">{error}</p>}
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Form fields are similar to Create Event Page */}
                     <div>
                         <label className="block mb-2 font-medium text-gray-700">Title</label>
                         <input type="text" value={title} onChange={e => setTitle(e.target.value)} required className="w-full p-3 border rounded-lg" />

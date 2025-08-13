@@ -10,7 +10,6 @@ export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
 
-  // --- NEW: Dynamically set logo text based on role ---
   const logoText = isAdmin ? 'Event Manager Admin' : 'Event Hub';
 
   const handleLogout = () => {
@@ -22,7 +21,6 @@ export default function Navbar() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
-  // Auto refresh when coming to dashboard after login
   useEffect(() => {
     if (pathname === '/dashboard') {
       router.refresh();
@@ -34,19 +32,16 @@ export default function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            {/* --- UPDATED: Logo now uses the dynamic text --- */}
             <Link href="/" className="text-2xl font-bold text-black-600">
               {logoText}
             </Link>
           </div>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex md:items-center md:space-x-8">
             <Link href="/" className="text-gray-600 hover:text-indigo-600">Events</Link>
             {isAuthenticated && (
               <Link href="/dashboard" className="text-gray-600 hover:text-indigo-600">Dashboard</Link>
             )}
-            {/* Kept the original "Create Event" link for admins */}
             {isAdmin && (
               <Link href="/events/create" className="text-gray-600 hover:text-indigo-600">Create Event</Link>
             )}
@@ -75,7 +70,6 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -95,7 +89,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">

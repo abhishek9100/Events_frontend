@@ -33,7 +33,6 @@ export default function EventDetailPage() {
     const { id } = params;
     const { isAuthenticated, isAdmin, user, token } = useAuth();
     
-    // Fetch event details
     useEffect(() => {
         if (!id) return;
         const fetchEvent = async () => {
@@ -44,7 +43,6 @@ export default function EventDetailPage() {
         fetchEvent();
     }, [id]);
     
-    // Check user's registration status
     useEffect(() => {
         if (!isAuthenticated || !event || !token) {
             setIsCheckingRegistration(false);
@@ -72,7 +70,6 @@ export default function EventDetailPage() {
         checkRegistration();
     }, [event, isAuthenticated, token]);
 
-    // Fetch attendees
     useEffect(() => {
         if (isAdmin && event && user?.userId === event.authorId) {
             const fetchAttendees = async () => {
@@ -142,7 +139,6 @@ export default function EventDetailPage() {
                     <div className="p-8">
                         <h1 className="text-4xl font-bold text-gray-800 mb-3">{event.title}</h1>
                         
-                        {/* --- UPDATED LOCATION ICON --- */}
                         <p className="text-lg text-gray-600 mb-2 flex items-center">
                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -151,7 +147,6 @@ export default function EventDetailPage() {
                            <span>{event.location}</span>
                         </p>
 
-                        {/* --- UPDATED CALENDAR ICON --- */}
                         <p className="text-md text-gray-500 mb-6 flex items-center">
                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -163,7 +158,6 @@ export default function EventDetailPage() {
                         <p className="text-gray-700 leading-relaxed whitespace-pre-wrap mb-6">{event.description}</p>
                         <p className="text-sm text-gray-500 mb-8">👤 Posted by: {event.author?.name}</p>
 
-                        {/* Action Buttons */}
                         <div className="flex space-x-4 items-center">
                             {!isAuthenticated && (
                                 <motion.button onClick={handleRegister} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-green-500 text-white font-semibold py-3 px-6 rounded-lg">
@@ -193,7 +187,6 @@ export default function EventDetailPage() {
                     </div>
                 </motion.div>
 
-                {/* Attendees List for Admin Author */}
                 {isAdmin && isAuthor && (
                     <div className="mt-12 bg-white rounded-2xl shadow-xl p-8">
                         <h2 className="text-2xl font-bold text-gray-800 mb-4">Attendees ({attendees.length})</h2>

@@ -50,7 +50,6 @@ export default function RegisterPage() {
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Name */}
           <div>
             <label className="block mb-1 font-medium text-gray-700">Name</label>
             <input
@@ -63,7 +62,6 @@ export default function RegisterPage() {
             />
           </div>
 
-          {/* Email */}
           <div>
             <label className="block mb-1 font-medium text-gray-700">Email</label>
             <input
@@ -76,7 +74,6 @@ export default function RegisterPage() {
             />
           </div>
 
-          {/* Password */}
           <div>
             <label className="block mb-1 font-medium text-gray-700">Password</label>
             <input
@@ -90,7 +87,6 @@ export default function RegisterPage() {
             />
           </div>
 
-          {/* Error & Success Messages */}
           {error && (
             <p className="text-red-500 text-center bg-red-50 py-2 px-4 rounded-md border border-red-200">
               {error}
@@ -102,7 +98,6 @@ export default function RegisterPage() {
             </p>
           )}
 
-          {/* Submit Button */}
           <button
             type="submit"
             className="w-full bg-indigo-600 text-white p-3 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 font-medium shadow-md transition"
@@ -111,7 +106,6 @@ export default function RegisterPage() {
           </button>
         </form>
 
-        {/* Footer Link */}
         <p className="text-center text-gray-600 mt-6">
           Already have an account?{' '}
           <Link href="/login" className="text-indigo-600 font-medium hover:underline">
